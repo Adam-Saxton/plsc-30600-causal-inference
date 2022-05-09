@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang xml:lang>
   <head>
-    <title>Week 6: Instrumental Variables</title>
+    <title>Week 7: Difference-in-differences</title>
     <meta charset="utf-8" />
     <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
     <link href="data:text/css,a%2C%20a%20%3E%20code%20%7B%0Acolor%3A%20rgb%28249%2C%2038%2C%20114%29%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Efootnote%20%7B%0Aposition%3A%20absolute%3B%0Abottom%3A%203em%3B%0Apadding%2Dright%3A%204em%3B%0Afont%2Dsize%3A%2090%25%3B%0A%7D%0A%2Eremark%2Dcode%2Dline%2Dhighlighted%20%7B%20background%2Dcolor%3A%20%23ffff88%3B%20%7D%0A%2Einverse%20%7B%0Abackground%2Dcolor%3A%20%23272822%3B%0Acolor%3A%20%23d6d6d6%3B%0Atext%2Dshadow%3A%200%200%2020px%20%23333%3B%0A%7D%0A%2Einverse%20h1%2C%20%2Einverse%20h2%2C%20%2Einverse%20h3%20%7B%0Acolor%3A%20%23f3f3f3%3B%0A%7D%0A%0A%2Eleft%2Dcolumn%20%7B%0Acolor%3A%20%23777%3B%0Awidth%3A%2020%25%3B%0Aheight%3A%2092%25%3B%0Afloat%3A%20left%3B%0A%7D%0A%2Eleft%2Dcolumn%20h2%3Alast%2Dof%2Dtype%2C%20%2Eleft%2Dcolumn%20h3%3Alast%2Dchild%20%7B%0Acolor%3A%20%23000%3B%0A%7D%0A%2Eright%2Dcolumn%20%7B%0Awidth%3A%2075%25%3B%0Afloat%3A%20right%3B%0Apadding%2Dtop%3A%201em%3B%0A%7D%0A%2Epull%2Dleft%20%7B%0Afloat%3A%20left%3B%0Awidth%3A%2047%25%3B%0A%7D%0A%2Epull%2Dright%20%7B%0Afloat%3A%20right%3B%0Awidth%3A%2047%25%3B%0A%7D%0A%2Epull%2Dright%20%2B%20%2A%20%7B%0Aclear%3A%20both%3B%0A%7D%0Aimg%2C%20video%2C%20iframe%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0A%7D%0Ablockquote%20%7B%0Aborder%2Dleft%3A%20solid%205px%20lightgray%3B%0Apadding%2Dleft%3A%201em%3B%0A%7D%0A%2Eremark%2Dslide%20table%20%7B%0Amargin%3A%20auto%3B%0Aborder%2Dtop%3A%201px%20solid%20%23666%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23666%3B%0A%7D%0A%2Eremark%2Dslide%20table%20thead%20th%20%7B%20border%2Dbottom%3A%201px%20solid%20%23ddd%3B%20%7D%0Ath%2C%20td%20%7B%20padding%3A%205px%3B%20%7D%0A%2Eremark%2Dslide%20thead%2C%20%2Eremark%2Dslide%20tfoot%2C%20%2Eremark%2Dslide%20tr%3Anth%2Dchild%28even%29%20%7B%20background%3A%20%23eee%20%7D%0A%40page%20%7B%20margin%3A%200%3B%20%7D%0A%40media%20print%20%7B%0A%2Eremark%2Dslide%2Dscaler%20%7B%0Awidth%3A%20100%25%20%21important%3B%0Aheight%3A%20100%25%20%21important%3B%0Atransform%3A%20scale%281%29%20%21important%3B%0Atop%3A%200%20%21important%3B%0Aleft%3A%200%20%21important%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
@@ -11,1005 +11,408 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Week 6: Instrumental Variables
+# Week 7: Difference-in-differences
 ## PLSC 30600 - Causal Inference
 
 ---
 
 
-# Last two weeks
+# Last week
 
-  - Identification under **conditional ignorability**
-    - Treatment assignment is independent of the potential outcomes given observed confounders `\(\mathbf{X}\)`
-    - &quot;Selection-on-observables&quot;
-  - &quot;Selection-on-observables&quot; isn&#39;t a testable assumption
-    - Relies on theory to decide which `\(\mathbf{X}\)` to include.
-    - DAGs can help here.
-  - Lots of estimation strategies
-    - Stratify with low-dimensional `\(\mathbf{X}\)`
-    - IPTW to eliminate treatment-covariate relationship, regression to model the outcome-covariate relationship.
-    - Matching to reduce model dependence.
-      - Or consider more modern flexible modelling techniques for `\(E[Y_i(d) | X_i]\)`
+- Identification under **unobserved confounding**
+- Instrumental variables - we can identify the local average treatment effect (LATE) with an instrument that...
+  - ...is ignorable/conditionally ignorable...
+  - ...and affects the outcome only through the treatment (exclusion restriction)...
+  - ...and has a monotonic effect on treatment.
+- Our simple IV estimator (1 instrument, 1 treatment, no covariates) is a ratio of the reduced form effect of the instrument and the first-stage effect.
+  - Ratios are poorly behaved! Lots of statistical issues with a weak first stage.
       
 ---
 
 # This week
 
-  - Can we estimate a treatment effect when neither ignorability nor conditional ignorability hold for treatment?
-    - Can we get rid of *unobserved* confounding?
-  - &quot;Instrumental variables&quot; designs are one way of dealing with this 
+- More strategies for identification when **unobserved confounding**
 --
 
-  - We can identify *some* average of treatment effects if...
-    - There *does* exist an ignorable or conditionally ignorable **instrument** which...
-    - ...has a monotonic effect on the treatment...
-    - ...and has no effect on the outcome *except* through its effect on the treatment.
+- When we have repeated observations over time, can we use pre-treatment outcomes to help with inference?
+  - Time 1: Some units treated, some units under control
+  - Time 0: All units under control
 --
-  - What&#39;s the average? The &quot;Local Average Treatment Effect&quot;
-    - Average effect among those who are *moved* to take treatment by the instrument
-    
+
+- What if the confounding in time 1 were unobserved...
+  - ... but the amount of confounding in time 1 is the same as in time 0?
+--
+
+- Then we can use the pre-treatment (time 0) difference in the treated and control arms to **de-bias** the time 1 difference.
+  - **Difference-in-differences**
+--
+
+- Assumption: **parallel trends**
+  - The *trend* in the average potential outcome in the treated group would have been the same as the *trend* in the control group absent treatment.
+--
+
+- Generalizes to any setting where we believe there is confounding but where the true effect of treatment is known to be 0
+  - &quot;Negative Outcome Control&quot;
+
 
 ---
 
 class: title-slide
 
-# Instrumental Variables
+# Difference-in-differences
 $$
   \require{cancel}
 $$
 
+
 ---
 
-# Treatment non-compliance
+# John Snow and Cholera
 
-- Often experiments suffer from treatment **non-compliance**
-  - Participants randomized to receive a phone call don&#39;t pick up.
-  - Participants randomized to wear surgical masks choose not to.
+.center[&lt;img src=&quot;assets/johnsnow.png&quot; alt = &quot;johnsnow&quot;, height=&quot;400px&quot;&gt;]
+
+---
+
+# John Snow and Cholera
+
+- 1854: Large cholera outbreak near Broad Street in London.
+  - Physician John Snow hypothesized that cholera was transmitted through the water
+  - Contrary to popular belief that it was airborne (&quot;miasma theory&quot;)
 --
 
-- New notation!
-  - Let `\(Z_i\)` denote whether `\(i\)` is assigned to receive a treatment.
-  - Let `\(D_i\)` denote the treatment actually *taken* by an individual. 
+- Snow convinced the local authorities to remove the handle of the Broad Street pump
+  - Cholera deaths declined
+  - But was this causal?
 --
 
-- Can we just take the simple difference-in-means between `\(D_i = 1\)` and `\(D_i = 0\)`?
-  - No! Non-compliance affected by other factors which might also affect the outcome.
-  - We&#39;re stuck with an observational design.
+- Even Snow didn&#39;t necessarily think so...
+
+&gt; There is no doubt that the mortality was much diminished, as I said before, by the flight of the population, which commenced soon after the outbreak; but the attacks had so far diminished before the use of the water was stopped, that it is impossible to decide whether the well still contained the cholera poison in an active state, or whether, from some cause, the water had become free from it. (Snow, &quot;On the Mode of Communication of Cholera, 1855)
+
+---
+
+# John Snow and Cholera
+
+- The more interesting John Snow story was not the Broad Street pump, but another 1856 paper titled &quot;Cholera and the water supply in the south districts of London in 1854&quot;
+--
+
+- **Key insight**: South London was served by two major water companies: .maroon[Lambeth Company] and .blue[Southwark and Vauxhall Company].
+  - Lambeth switched to a less contaminated source between 1849 and 1853
   
----
-
-- Unless...
-  
----
-
-# Intent-to-treat effect
-
-- We can first just change the question - instead of the effect of **treatment**, we can make our estimand the effect of being **assigned to treatment**.
-- Our estimator for the ITT is just the difference in means between the `\(Z_i = 1\)` and `\(Z_i = 0\)` arms
-
-`$$\hat{\tau}_{\text{ITT}} = \hat{E}[Y_i | Z_i = 1] - \hat{E}[Y_i | Z_i = 0]$$`
-
-- Identified under randomization of `\(Z_i\)` even if `\(D_i\)` is not randomized.
-  - But combines two effects: the actual effect of `\(D_i\)` and the effect of `\(Z_i\)` on `\(D_i\)`.
-
----
-
-# Instrumental variables
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-1-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
-- Suppose though that we&#39;re interested in the *actual* effect of receiving treatment (the effect of `\(D_i\)`). What can we do?
-
-
-
----
-
-# Instrumental variables
-
-- Start by writing down potential outcomes for `\(D_i\)` along with .maroon[joint] potential outcomes of `\(Y_i\)` in terms of `\(Z_i\)` and `\(D_i\)`
-
-`$$D_i(z) = D_i \text{ if } Z_i = z$$`
-`$$Y_i(d, z) = Y_i \text{ if } D_i = d, Z_i = z$$`
 --
 
-- Observed treatment `\(D_i\)` is a function of treatment assignment ( `\(Z_i\)` ) - it&#39;s a post-treatment quantity (and so has potential outcomes).
+&gt; Between the epidemics of 1849 and that of 1853, one of the water companies supplying the south districts of London changed its source of supply from the middle of the town, near the foot of the Hungerford Suspension Bridge, to Thames Ditton, at a part of the river which is beyond the influence of the tide, and, therefore, out of reach of the sewage of the metropolis. (Snow, 1856)
 
 ---
 
-# Assumptions
+# John Snow and Cholera
 
-1. Randomization of instrument
-2. Exclusion restriction
-3. Non-zero first-stage relationship
-4. Monotonicity
+.center[&lt;img src=&quot;assets/john_snow_map.jpg&quot; alt = &quot;johnsnow&quot;, height=&quot;500px&quot;&gt;]
 
 ---
 
-# Assumption 1: Randomization
+# John Snow and Cholera
 
-- `\(Z_i\)` is is independent of both sets of potential outcomes (potential outcomes for the treatment and potential outcomes for the outcome).
+- Snow compared Lambeth (treated) districts with Southwark and Vauxhall (control) districts -- less mortality in Lambeth.
 
-`$$\{D_i(1), D_i(0)\} {\perp \! \! \! \perp} Z_i$$`
-
-`$$\{Y_i(d, z) \forall d, z\} {\perp \! \! \! \perp} Z_i$$`
---
-
-- We can weaken this to conditional ignorability (where `\(Z_i\)` is randomized conditional on `\(X_i\)`), which is common in observational settings.
-  - But if we don&#39;t believe conditional ignorability for the treatment, why would we believe it for the instrument?
-- Sufficient to identify the **intent-to-treat (ITT)** effect
-
----
-
-# Assumption 1: Randomization
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-2-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
-- The randomization assumption eliminates any arrows from `\(U\)` to `\(Z\)`.
-
----
-
-# Assumption 2: Exclusion restriction
-
-- `\(Z_i\)` **only affects** `\(Y_i\)` by way of its effect on `\(D_i\)`.
-- In other words, if `\(D_i\)` were set at some level `\(d\)`, the potential outcome for `\(Y_i(d, z)\)` does not depend on `\(z\)`.
-
-`$$Y_i(d, z) = Y_i(d, z^{\prime}) \text{ for any } z \neq z^{\prime}$$`
+&gt; ...Taking into account the population supplied respectively by each company, the mortality was, at this period of the epidemic, nearly eight times as great in that supplied by the Southwark and Vauxhall Company as in that supplied by the Lambeth Company. (Snow, 1856)
 
 --
 
-- **Not a testable assumption!** -- we have to justify this with substantive knowledge.
-  - Easiest in the treatment non-compliance case
-  - But consider what might happen in a non-blinded situation where respondents knew their treatment assignments.
-- &quot;Surprise&quot; factor -- If I told you `\(Z\)` was associated with `\(Y\)`, would you think &quot;that&#39;s odd&quot;?
-
----
-
-# Assumption 2: Exclusion restriction
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-3-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
-
-- The exclusion restriction eliminates any causal paths from `\(Z\)` to `\(Y\)` **except** for `\(Z \to D \to Y\)`.
-
----
-
-# Assumption 3: Non-zero first stage
-
-- `\(Z_i\)` has an effect on `\(D_i\)`
-
-`$$E[D_i(1) - D_i(0)] \neq 0$$`
---
-
-- Seems trivial, but we need this to make the estimator work.
-- Magnitude matters for estimator performance - a &quot;weak&quot; first-stage `\(\leadsto\)` heavily biased IV estimator
-  - IV estimators are *consistent* but not *unbiased*.
-
----
-
-# Assumption 3: Non-zero first stage
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-4-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
-- The non-zero first stage assumption requires a path from `\(Z\)` to `\(D\)`.
-
----
-
-# Assumption 4: Monotonicity
-
-- `\(Z_i\)`&#39;s effect on `\(D_i\)` only goes in one direction **at the individual level**
-
-`$$D_i(1) - D_i(0) \ge 0$$`
-
-- If it goes the other way, we can always flip the direction of the treatment to make this hold 
-  - The key is that the instrument does not have a positive effect on `\(D_i\)` for some units and a negative effect for others.
-- **Not a testable assumption**
-
----
-
-# Assumption 4: Monotonicity
-
-- In binary instrument/binary treatment world, this is sometimes called a &quot;no defiers&quot; assumption.
-
-Stratum              | `\(D_i(1)\)`          |  `\(D_i(0)\)` | 
-:-------------------:|:-----------------:|:---------:|
-&quot;Always-takers&quot;      |  `\(1\)`              |  `\(1\)`      |  
-&quot;Never-takers&quot;       |  `\(0\)`              |  `\(0\)`      |  
-&quot;Compliers&quot;          |  `\(1\)`              |  `\(0\)`      | 
-&quot;Defiers&quot;            |  `\(0\)`              |  `\(1\)`      |
+- But this isn&#39;t enough - what if Lambeth districts differed in unobserved ways from Southwark and Vauxhall districts?
 
 --
 
-- Under no defiers, every unit with `\(D_i = 1\)` and `\(Z_i = 0\)` is an always-taker, every unit with `\(D_i = 0\)` and `\(Z_i =1\)` is a never-taker.
+- So Snow also compared the observed mortality in 1853 to mortality in 1849, when **both** districts used contaminated water.
+
+&gt; In the autumn of 1853 it was shown by Dr. Farr* that the districts partly supplied by this, the Lambeth Water Company, with improved water, suffered less than the districts supplied entirely by the Southwark and Vauxhall Company with the water from the river at Battersea Fields, although in 1849 they had suffered rather more than the latter districts (Snow, 1856).
 
 ---
 
-# Assumption 4: Monotonicity
+# John Snow and Cholera
 
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-5-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
+- This was one of the first &quot;difference-in-differences&quot; designs.
+  - Not just a before-after comparison
+  - Not just a cross-sectional comparison
+--
 
-- Can&#39;t represent the monotonicity assumption in a DAG - it&#39;s an assumption about the form of the relationship between `\(Z\)` and `\(D\)`.
-
----
-
-# Interpreting the IV estimand
-
-- The classic IV estimand with one instrument is a ratio of sample covariances.
-
-`$$\tau_{\text{IV}} = \frac{Cov(Y, Z)}{Cov(D, Z)}$$`
-
-- With a binary instrument, this is sometimes called the &quot;Wald&quot; estimand - a ratio of differences in means
-
-`$$\tau_{\text{IV}} = \frac{E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]}{E[D_i | Z_i = 1] - E[D_i | Z_i = 0]}$$`
+- Implicit assumption: If there were something different about Lambeth (aside from the treatment) it would have the same effect on the outcome in the pre-treatment (1849) period as it would in 1853.
+  - An assumption on the counterfactuals: Had treatment not changed in Lambeth, the average trend (from 1849 to 1853) in Lambeth would have been the same as the trend in Southwark and Vauxhall
 
 ---
 
-# Interpreting the IV estimand
+# DiD with two periods
 
-- What does the Wald estimand correspond to in terms of causal effects?
+- Two groups (treated/control); two time periods (0, 1). 
+  - `\(D_i = 1\)`: treated in time `\(1\)`, `\(D_i = 0\)` control in time `\(1\)`
+  - All units under control in time `\(0\)`
+  - Can also think in terms of a treatment indicator in each time period: `\(D_{i1} = D_i\)`, `\(D_{i0} = 0\)`
+--
 
-`$$\tau_{\text{IV}} = \frac{E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]}{E[D_i | Z_i = 1] - E[D_i | Z_i = 0]}$$`
+- Two outcomes observed
+  - `\(Y_{i1}\)`: outcome in period `\(1\)`, `\(Y_{i0}\)` outcome in period `\(0\)`
+--
+
+- Potential outcomes
+
+`$$Y_{i1}(d) = Y_{i1} \text{ if } D_i = d$$`
 
 --
 
-- Under our identification assumptions:
-  - The numerator is the ITT
-  - The denominator is the first-stage effect
-  
+- Treatment in time `\(1\)` has no effect on the outcome in time `\(0\)` (no reverse-causality)
+
+`$$Y_{i0}(1) = Y_{i0}(0) = Y_{i0}$$`
+
 ---
 
-# Interpreting the IV estimand
+# Identifying assumptions
 
-- Let&#39;s decompose the denominator first - under randomization:
-`$$\begin{align*}
-E[D_i | Z_i = 1] - E[D_i | Z_i = 0] &amp;= E[D_i(1) | Z_i = 1] - E[D_i(0) | Z_i = 0]\\
-&amp;= E[D_i(1)] - E[D_i(0)]\\
-&amp;= E[D_i(1) - D_i(0)]
-\end{align*}$$`
+- Causal estimand: **Average Treatment Effect on the Treated** (ATT) in time `\(1\)`
+
+`$$\tau_{\text{ATT}} = E[Y_{i1}(1) | D_i = 1] - E[Y_{i1}(0) | D_i = 1]$$`
 
 --
 
-- With binary treatment/binary instrument, we can use law of total expectation to decompose by principal stratum
+- The first part we can get directly from the data (observed outcome among the treated group)
 
-`$$E[D_i(1) - D_i(0)] = E[D_i(1) - D_i(0) | D_i(1) = D_i(0)] \times P(D_i(1) = D_i(0)) + \\
-E[D_i(1) - D_i(0) | D_i(1) &gt; D_i(0)] \times P(D_i(1) &gt; D_i(0)) + \\
-E[D_i(1) - D_i(0) | D_i(1) &lt; D_i(0)] \times P(D_i(1) &lt; D_i(0))$$`
+`$$\tau_{\text{ATT}} = E[Y_{i1} | D_i = 1] - E[Y_{i1}(0) | D_i = 1]$$`
 
 --
 
-- The first term is `\(0\)`
-- And by no defiers, the last term is `\(0\)` since `\(P(D_i(1) &lt; D_i(0)) = 0\)`
-
-`$$E[D_i(1) - D_i(0)] = Pr(D_i(1) &gt; D_i(0))$$`
-
+- Second part we don&#39;t observe directly and need some additional assumptions.
+  - But we won&#39;t assume ignorability of treatment: `\(Y_{i1}(0) \cancel{{\perp \! \! \! \perp}} D_i\)`
 
 ---
 
-# Interpreting the IV estimand
+# Identifying assumptions
 
-- Next, the numerator (the ITT). Under the exclusion restriction and randomization:
+- Remember the selection bias formula for the ATT:
 
-`$$E[Y_i | Z_i = 1] = E\bigg[Y_i(0) + \bigg(Y_i(1) - Y_i(0)\bigg)D_i(1)\bigg]$$`
-`$$E[Y_i | Z_i = 0] = E\bigg[Y_i(0) + \bigg(Y_i(1) - Y_i(0)\bigg)D_i(0)\bigg]$$`
+`$$\tau_{\text{ATT}} = \underbrace{\left\{E[Y_{i1} | D_i = 1] - E[Y_{i1} | D_i = 0]\right\}}_{\text{Difference-in-means in time 1}} - \underbrace{\left\{E[Y_{i1}(0) | D_i = 1] - E[Y_{i1}(0)| D_i = 0]\right\}}_{\text{Selection bias}}$$`
+
 --
 
-- The difference (with some algebra) is
-
-`$$E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]  = E\bigg[\bigg(Y_i(1) - Y_i(0)\bigg) \times \bigg(D_i(1) - D_i(0)\bigg)\bigg]$$`
-
----
-
-# Interpreting the IV estimand
-
-- Conditioning on the principal strata:
-
-`$$= E\bigg[(Y_i(1) - Y_i(0)) \times (0) | (D_i(1) = D_i(0))\bigg] \times P(D_i(1) = D_i(0)) + \\
- E\bigg[(Y_i(1) - Y_i(0)) \times (1) | (D_i(1) &gt; D_i(0))\bigg] \times  P(D_i(1) &gt; D_i(0)) + \\
- E\bigg[(Y_i(1) - Y_i(0)) \times (-1) | (D_i(1) &lt; D_i(0))\bigg] \times P(D_i(1) &lt; D_i(0))$$`
- 
- - Again, first term is zero because `\(D_i(1) - D_i(0) = 0\)`, third is zero by &quot;no defiers&quot; and we have
- 
-`$$E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0] =  E\bigg[Y_i(1) - Y_i(0) | D_i(1) &gt; D_i(0)\bigg] \times  P(D_i(1) &gt; D_i(0))$$`
-
-- The ITT is the product of a conditional average treatment effect and the proportion of compliers.
-
----
-
-# The LATE Theorem
-
-- The IV estimand, under our identification assumptions, is a Local Average Treatment Effect (LATE):
-
-`$$\frac{E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]}{E[D_i | Z_i = 1] - E[D_i | Z_i = 0]} = E[Y_i(1) - Y_i(0) | D_i(1) &gt; D_i(0)]$$`
-
-- The LATE is a conditional average treatment effect within the *subpopulation* of **compliers**
-- If treatment effects are constant, we can generalize this to the whole sample.
-  - But if effects are heterogeneous, we are not necessarily getting a &quot;representative&quot; treatment effect.
-  
----
-
-# Better LATE than never?
-
-- How should we interpret the LATE?  
-  - It&#39;s not necessarily the quantity we care about - we care about the effect of the treatment in the entire sample.
+- We can observe `\(E[Y_{i1}(0)| D_i = 0]\)`, but can&#39;t observe `\(E[Y_{i1}(0)| D_i = 1]\)`
+  - Can we estimate the **selection bias**?
 --
 
-- Compliers are those compelled to take treatment by our encouragement. Would estimates generalize to those who are less encourageable?
-  - The LATE is design-specific. If we came up with a different instrument, that changes the population on which we&#39;re estimating an effect!
-  - What can we do? 
-    - We could describe the distribution of covariates among compliers vs. the population as a whole (Abadie&#39;s kappa-weighting).
+- **Assumption**: The selection bias in time `\(1\)` is the same as the selection bias in time `\(0\)`.
 
 ---
 
+# Parallel trends
 
-# Example: The effect of media on voting
+- Our parallel trends assumption:
 
-- Gerber, Karlan and Bergan (2009, AEJ:AE) estimate the effect of reading the Washington Post (or Washington Times) on political attitudes and voting behavior.
-  - `\(Z_i\)`: Random assignment to receive a free subscription to the Washington Post
-  - `\(D_i\)`: Actually subscribing to the Washington Post (as measured by a post-encouragement survey)
-  - `\(Y_i\)`: 2005 Turnout (measured in the survey)
+`$$\underbrace{\left\{E[Y_{i1}(0) | D_i = 1] - E[Y_{i1}(0)| D_i = 0]\right\}}_{\text{Selection bias at time 1}} = \underbrace{\left\{E[Y_{i0} | D_i = 1] - E[Y_{i0}| D_i = 0]\right\}}_{\text{Observed difference at time 0}}$$`
 
 --
-- Assumptions:
-  - Assignment to get the free subscription offer is ignorable/exogenous
-  - Getting the free subscription offer affects actual subscriptions (non-zero first stage)
-  - No one would subscribe to the Post if they *didn&#39;t* receive the offer but not subscribe if they *did*. (monotonicity/no defiers)
-  - Assignment to get the free subscription offer doesn&#39;t affect voting *except through* actually subscribing to the Post (exclusion restriction) 
+
+- Alternatively, re-arranging the terms, we can write &quot;parallel trends&quot; as
+
+`$$\underbrace{\left\{E[Y_{i1}(0) | D_i = 1] - E[Y_{i0} | D_i = 1] \right\}}_{\text{Average counterfactual trend among treated}} = \underbrace{\left\{E[Y_{i1}(0)| D_i = 0] - E[Y_{i0}| D_i = 0]\right\}}_{\text{Average trend among controls}}$$`
 
 ---
 
-# Example: The effect of media on voting
+# Parallel trends
 
-- First, subset the data to WaPo or control observations that completed the follow-up survey
+- Substituting our parallel trends assumption back into the ATT formula gives us an expression in terms of observables
 
+`$$\tau_{\text{ATT}} = \underbrace{\left\{E[Y_{i1} | D_i = 1] - E[Y_{i1} | D_i = 0]\right\}}_{\text{Difference-in-means in time 1}} - \underbrace{\left\{E[Y_{i0} | D_i = 1] - E[Y_{i0} | D_i = 0]\right\}}_{\text{Difference-in-means at time 0}}$$`
 
+--
+
+- Or equivalently
+
+`$$\tau_{\text{ATT}} = \underbrace{\left\{E[Y_{i1} - Y_{i0} | D_i = 1]\right\}}_{\text{Average change in the treated group}} - \underbrace{\left\{E[Y_{i1} - Y_{i0} | D_i = 0]\right\}}_{\text{Average change in the control group}}$$`
+
+--
+
+- We can estimate each of these four expectations non-parametrically with the sample means.
+
+---
+
+# Difference-in-differences
+
+.center[&lt;img src=&quot;assets/Did_visual.png&quot; alt = &quot;diffindiff&quot;, height=&quot;400px&quot;&gt;]
+
+---
+
+# Estimation
+
+- With repeated observations at the unit level, we can use a simple regression of the **differenced** outcomes on the treatment indicator
+
+`$$Y_{i1} - Y_{i0} = \alpha + \tau D_i + \epsilon_i$$`
+
+- Each row in the data is a single *unit* with outcomes in two time periods.
+  - Straightforward asymptotic inference with Neyman-like SEs
+
+---
+
+# Fixed-effects estimators
+
+- Suppose our dataset is organized where each row is a unit/time period - `\(it\)`.
+- We can recover our DiD estimator using a &quot;two-way&quot; fixed effects regression
+  - Unique parameter for each *unit*
+  - Unique parameter for each *time period*
+
+`$$Y_{it} = \alpha_i + \delta_{t} + \tau D_{it} + \epsilon_{it}$$`
+--
+
+- **Expectations**: 
+  - `\(E[Y_{i0} | D_i = 0] = E[\alpha_i | D_i = 0] + \delta_0\)`
+  - `\(E[Y_{i1} | D_i = 0] = E[\alpha_i | D_i = 0] + \delta_1\)`
+  - `\(E[Y_{i0} | D_i = 1] = E[\alpha_i | D_i = 1] + \delta_0\)`
+  - `\(E[Y_{i1} | D_i = 1] = E[\alpha_i | D_i = 1] + \delta_1 + \tau\)`
+--
+
+- **Differences**
+  - `\(E[Y_{i1} | D_i = 1] - E[Y_{i0} | D_i = 1] = \delta_1 - \delta_0 + \tau\)`
+  - `\(E[Y_{i1} | D_i = 0] - E[Y_{i0} | D_i = 0] = \delta_1 - \delta_0\)`
+--
+
+- **Difference-in-differences**
+  - `\(\{E[Y_{i1} | D_i = 1] - E[Y_{i0} | D_i = 1]\} - \{E[Y_{i1} | D_i = 0] - E[Y_{i0} | D_i = 0]\} = \tau\)`
+--
+
+- Does **not** generalize neatly to many time periods w/ variation in treatment timing.
+  - Need to believe the constant, instantaneous treatment effect `\(\tau\)`
+
+---
+
+# Fixed-effects as imputation
+
+- We can think of our DiD estimator as an imputation estimator
+
+`$$\hat{\tau}_{\text{ATT}} = \frac{1}{N_t}\sum_{i: D_{i} = 1} Y_{i1} - \widehat{Y_{i1}(0)}$$`
+--
+
+- Under parallel trends, 
+
+`$$\widehat{Y_{i1}(0)} = Y_{i0} - \left\{\frac{1}{N_c} \sum_{j:D_j = 0} Y_{j1} - Y_{j0}\right\}$$`
+
+--
+
+- Can also imagine fitting a model among *only* the control periods ( `\(D_{it} = 0\)` ) and using the model to predict on the treated units.
+
+`$$E[Y_{it} | D_{it} = 0] = \alpha_i + \delta_t$$`
+
+---
+
+# Standard errors
+
+- Recall the classic &quot;sandwich&quot; form for the variance of the OLS coefficients
+
+`$$Var(\hat{\beta} | \mathbf{X}) = (\mathbf{X}^{\prime}\mathbf{X})^{-1}\mathbf{X^{\prime}}\Omega\mathbf{X}(\mathbf{X}^{\prime}\mathbf{X})^{-1}$$`
+- `\(\Omega\)` is the outer product of the error terms `\(\epsilon\epsilon^{\prime}\)`
+
+--
+
+- We can&#39;t just plug in the outer product of the residuals as our estimator. `\(\hat{\Omega} = \hat{\epsilon}\hat{\epsilon}^{\prime}\)` will not yield a consistent estimator of `\(Var(\hat{\beta})\)`.
+  - Under independence across observations `\(Cov(\epsilon_i, \epsilon_j) = 0\)` and homoskedasticity, `\(\Omega\)` is the identity matrix multiplied by a constant `\(\sigma^2\)` and we get our conventional OLS SE estimator.
+  - Under independence but with heteroskedasticity, we can construct a plug-in estimator `\(\hat{\Omega}\)` with `\(0\)` on the off-diagonals and the squared residuals `\(\hat{\epsilon_i}^2\)` on the diagonals. This yields a consistent estimator for `\(Var(\hat{\beta})\)` (Huber-White SEs)
+
+---
+
+# Standard errors
+
+- In the TWFE setting, we might believe that errors are independent across units: `\(Cov(\epsilon_{it}, \epsilon_{jt}) = 0\)` but that there is within-unit correlation over time: `\(Cov(\epsilon_{it}, \epsilon_{it^{\prime}}) \neq 0\)`. Huber-White assumptions are incorrect.
+- Alternative: **Cluster-robust Standard Errors.**
+  - Assume `\(\Omega\)` is block-diagonal (no error covariance across clusters, unrestricted error covariance within cluster)
+  - `\(\hat{\Omega_c} = \hat{\epsilon_c}\hat{\epsilon_c}^{\prime}\)`
+
+`$$\widehat{Var(\hat{\beta} | \mathbf{X})} = (\mathbf{X}^{\prime}\mathbf{X})^{-1}\left[\sum_{c}\mathbf{X^{\prime}_{c}}\hat{\Omega}_c\mathbf{X_c}\right](\mathbf{X}^{\prime}\mathbf{X})^{-1}$$`
+
+--
+
+- Consistent but biased w/ small numbers of clusters: typically augment with a small-sample correction (CR1, CR2, etc...)
+  - Cluster bootstrap also performs somewhat better in smaller samples.
+
+---
+
+# Example: Card and Krueger (1994, AER)
+
+- Does increasing the minimum wage reduce employment?
+  - Classical theoretical models suggest yes...
+  - But empirical evidence is hard to come by - no one has (yet) randomized the minimum wage.
+--
+
+- Card and Krueger use a policy change in New Jersey relative to Pennsylvania
+- In 1992, NJ raised its minimum wage from 4.25 dollars per hour to 5.05 per hour
+  - PA stayed at 4.25 dollars per hour
+--
+
+- Surveyed 410 fast food restaurants before and after the change was put into place
+  - Compared change in employment before/after in NJ with change before/after in PA.
+--
+
+- **Key assumption** - Had NJ not implemented the minimum wage increase, the average trend in NJ fast food restaurant employment would have been the same as the average trend in PA fast food restaurant employment
+
+---
+
+# Example: Card and Krueger (1994, AER)
 
 
 ```r
-green &lt;- read_dta(&quot;assets/publicdata.dta&quot;)
-wapost &lt;- green %&gt;% filter(treatment != &quot;TIMES&quot;&amp;!is.na(getpost)&amp;!is.na(voted))
+# Load the data for Card and Krueger (1994)
+minwage &lt;- read_csv(&quot;assets/minwage.csv&quot;)
+# Index of observations
+minwage$unit &lt;- 1:nrow(minwage)
+
+# Change in full-time employment
+minwage$CHG_EMPFT &lt;- minwage$EMPFT2 - minwage$EMPFT
+
+# Regress change on treatment (STATE = 1 for NJ)
+diff &lt;- lm_robust(CHG_EMPFT ~ STATE, data=minwage, se_type = &quot;HC0&quot;)
+tidy(diff)
 ```
 
+```
+##          term estimate std.error statistic p.value conf.low conf.high  df
+## 1 (Intercept)    -2.49      1.63     -1.53  0.1278   -5.704     0.719 356
+## 2       STATE     2.93      1.72      1.70  0.0893   -0.451     6.306 356
+##     outcome
+## 1 CHG_EMPFT
+## 2 CHG_EMPFT
+```
 
 ---
 
-# Example: The effect of media on voting
-
-- Is there a first-stage effect?
+# Example: Card and Krueger (1994, AER)
 
 
 ```r
-lm_robust(getpost ~ post, data=wapost)
+# Equivalence of TWFE in 2x2 case
+minwage_long &lt;- minwage %&gt;% pivot_longer(cols = starts_with(&quot;EMPFT&quot;), 
+                names_to = &quot;time_str&quot;, names_prefix = &quot;EMPFT&quot;, values_to = &quot;EMPFT&quot;)
+
+# Recode time variable
+minwage_long$time &lt;- NA
+minwage_long$time[minwage_long$time_str == &quot;&quot;] &lt;- 0
+minwage_long$time[minwage_long$time_str == &quot;2&quot;] &lt;- 1
+
+# Make the treatment variable
+minwage_long$treat &lt;- as.integer(minwage_long$STATE == 1&amp;minwage_long$time==1)
+
+# TWFE
+twfe_reg &lt;- lm_robust(EMPFT ~ treat + as.factor(time) + as.factor(unit), 
+                      data=minwage_long, cluster=unit, se_type = &quot;CR0&quot;)
+tidy(twfe_reg) %&gt;% filter(term == &quot;treat&quot;)
 ```
 
 ```
-##             Estimate Std. Error t value Pr(&gt;|t|) CI Lower CI Upper  DF
-## (Intercept)    0.203     0.0189   10.73 4.06e-25    0.166    0.240 760
-## post           0.341     0.0341    9.99 3.82e-22    0.274    0.408 760
+##    term estimate std.error statistic p.value conf.low conf.high  df outcome
+## 1 treat     2.93      1.72       1.7  0.0893   -0.451      6.31 357   EMPFT
 ```
-
-- About 34 percent of the sample is a &quot;complier&quot; - quite substantial!
- 
----
-
-# Example: The effect of media on voting
-
-- Is there an ITT?
-
-
-```r
-lm_robust(voted ~ post, data=wapost)
-```
-
-```
-##             Estimate Std. Error t value  Pr(&gt;|t|) CI Lower CI Upper  DF
-## (Intercept)  0.72627      0.021 34.6303 1.91e-158   0.6851   0.7674 760
-## post        -0.00135      0.033 -0.0409  9.67e-01  -0.0661   0.0634 760
-```
-
-- ITT is essentially zero.
- 
----
-
-# Example: The effect of media on voting
-
-- Compare with the naive OLS estimate
-
-
-```r
-lm_robust(voted ~ getpost, data=wapost)
-```
-
-```
-##             Estimate Std. Error t value  Pr(&gt;|t|) CI Lower CI Upper  DF
-## (Intercept)    0.703     0.0204   34.45 2.11e-157 0.663119    0.743 760
-## getpost        0.066     0.0332    1.99  4.70e-02 0.000877    0.131 760
-```
-
-- Post subscribers are 6pp more likely to vote in the 2005 VA gubernatorial election. 
-  - But is this causal No!
- 
----
-
-
-# Example: The effect of media on voting
-
-- Let&#39;s estimate the LATE using the Wald estimator 
-
-
-```r
-(mean(wapost$voted[wapost$post == 1]) - mean(wapost$voted[wapost$post == 0]))/(mean(wapost$getpost[wapost$post == 1]) - mean(wapost$getpost[wapost$post == 0]))
-```
-
-```
-## [1] -0.00396
-```
-
-- Equivalent to a ratio of regression coefficients
-
-```r
-coef(lm_robust(voted ~ post, data=wapost))[2]/coef(lm_robust(getpost ~ post, data=wapost))[2]
-```
-
-```
-##     post 
-## -0.00396
-```
-
- 
----
-
-# Example: The effect of media on voting
-
-- We&#39;ll talk about inference later, but take note: the SE for the LATE can be much larger than the SE for the ITT
-
-
-```r
-iv_robust(voted ~ getpost | post, data=wapost)
-```
-
-```
-##             Estimate Std. Error t value Pr(&gt;|t|) CI Lower CI Upper  DF
-## (Intercept)  0.72707     0.0368 19.7765 1.51e-70    0.655    0.799 760
-## getpost     -0.00396     0.0968 -0.0409 9.67e-01   -0.194    0.186 760
-```
-
----
-
-# IV in observational studies
-
-- Most applications of IV are not treatment non-compliance.
-- But all follow the same underlying logic.
-  - Treatment of interest is not randomized...but there exists a real or &quot;natural&quot; experiment that is.
-  - And this natural experiment affects the outcome only through its affect on the treatment of interest.
---
-
-- Examples:
-  - Angrist (1990) - Vietnam draft lottery number as an instrument for the effect of military service on income.
-  - Angrist and Krueger (1991) - Birth quarter as an instrument for education&#39;s effect on income.
-  - Acemoglu et. al. (2001) - European settler mortality as an instrument for the effect of institutional quality on GDP per capita.
-  - Kern &amp; Hainmueller (2009) - West German TV signal strength as an instrument for the effect of watching West German TV on support for the East German regime
-
---
-- Challenges
-  - Exogeneity/ignorability isn&#39;t guaranteed
-  - If an instrument has a large effect on your treatment of interest, it probably has an effect on other stuff that could affect the outcome as well (violating the exclusion restriction)
-  
----
-
-# Discussion: The rainfall instrument
-
-- **Miguel, Satyanth, and Sergenti (2004, JPE)** look at the effect of .maroon[economic growth] on .green[civil conflict] in 41 African countries.
-  - Growth and conflict are confounded (e.g. by political institutions).
-  - Instrument for GDP growth using the annual change in rainfall -- for heavily agrarian countries, rainfall fluctuations determine crop yields which are a large component of GDP.
-  - Observe that changes in rainfall are associated with changes in GDP and negative GDP shocks (instrumented by rainfall) increase civil conflict.
---
-
-- Does this satisfy the IV identification assumptions?
-  - Exogeneity? Is rainfall as-good-as randomly assigned?
-  - Monotonicity? Do positive rainfall shocks *strictly* boost GDP per capita?
-  - Exclusion restriction? Is rainfall&#39;s effect transmitted only through the mechanism the authors define?
 
 ---
 
 class: title-slide
 
-# Estimation and inference for IV
-
-
----
-
-# IV with constant effects
-
-- Let&#39;s consider a linear model for the potential outcomes
-
-`$$Y_i(d) = \alpha + \tau d + \gamma U_i + \eta_i$$`
-
---
-
-- If we could control for `\(U_i\)`, we could estimate the regression to get an estimate of `\(\tau\)`
-
-`$$Y_i = \alpha + \tau D_i + \gamma U_i + \eta_i$$`
-
-- But we can&#39;t - and regressing `\(Y_i\)` on `\(D_i\)` alone will not give a consistent estimator of `\(\tau\)` since `\(Cov(\gamma U_i + \eta_i, D_i) \neq 0\)`
-
----
-
-# IV with constant effects
-
-- Suppose `\(Z_i\)` is an instrument that is exogeneous and satisfies the exclusion restriction
-
-`$$Cov(\gamma U_i + \eta_i, Z_i) = 0$$`
---
-
-- Then, we can identify `\(\tau\)`
-
-`$$\begin{align*}
-Cov(Y_i, Z_i) &amp;= Cov(\alpha + \tau D_i + \gamma U_i + \eta_i, Z_i)\\
-&amp;= Cov(\alpha, Z_i) + Cov(\tau D_i, Z_i) + Cov(\gamma U_i + \eta_i, Z_i)\\
-&amp;= \tau Cov( D_i, Z_i)
-\end{align*}$$`
-
---
-
-- Which gives us our IV estimand
-
-`$$\tau = \frac{Cov(Y_i, Z_i)}{Cov(D_i, Z_i)}$$`
-
----
-
-# IV estimator
-
-- We can estimate `\(\tau\)` by plugging in the sample quantities.
-
-`$$\hat{\tau_{\text{IV}}} = \frac{\widehat{Cov(Y_i, Z_i)}}{\widehat{Cov(D_i, Z_i)}}$$`
---
-
-- This also can be written as a ratio of two regression coefficients
-
-`$$\hat{\tau_{\text{IV}}} = \frac{\widehat{Cov(Y_i, Z_i)}/\widehat{Var(Z_i)}}{\widehat{Cov(D_i, Z_i)}/\widehat{Var(Z_i)}}$$`
-
-- Denominator: &quot;First stage&quot;: Regression of `\(D_i\)` on `\(Z_i\)`
-- Numerator: &quot;Reduced form&quot;: Regression of `\(Y_i\)` on `\(Z_i\)`
-
----
-
-# 2SLS - Including covariates
-
-- What if ignorability of `\(Z_i\)` only holds conditional on `\(X_i\)` -- or we want to include `\(X_i\)` as predictors to improve precision.
-- We&#39;ll assume a particular structure for the outcome and treatment models
-
-`$$Y_i = X_i^{\prime}\beta + \tau D_i + \epsilon_i$$`
-`$$D_i = X_i^{\prime}\alpha + \gamma Z_i + \nu_i$$`
-
-- Assume the `\(X_i\)` are exogenous but not excluded (appear in both equations). `\(D_i\)` is still endogenous so we can&#39;t get the treatment effect by just regressing outcome on treatment and covariates.
-
-- Can we get an expression for `\(Y_i\)` in the form of `\(Z_i\)` alone?
-
----
-
-# 2SLS - Including covariates
-
-- Substitute in for `\(D_i\)`
-
-`$$\begin{align*}
-Y_i &amp;= X_i^{\prime}\beta + \tau\left[X_i^{\prime}\alpha + \gamma Z_i + \nu_i\right] + \epsilon_i\\
- &amp;= X_i^{\prime}\beta + \tau\left[X_i^{\prime}\alpha + \gamma Z_i\right] + [\tau\nu_i + \epsilon_i]\\
-  &amp;= X_i^{\prime}\beta + \tau E[D_i | X_i, Z_i] + \epsilon_i^{*}\\
-\end{align*}$$`
-
---
-
-- We can identify `\(\tau\)` by regressing `\(Y_i\)` on `\(X_i\)` and the **fitted values** from a regression of `\(D_i\)` on `\(X_i\)` and the instrument `\(Z_i\)`.
-- **Intuition** -- we want to only use the variation in `\(D_i\)` that is driven by the **exogenous** factor `\(Z_i\)`. 
-
----
-
-# 2SLS - Including covariates
-
-- You can also still get the ratio form of the IV estimator
-
-`$$\begin{align*}
-Y_i &amp;= X_i^{\prime}\beta + \tau\left[X_i^{\prime}\alpha + \gamma Z_i + \nu_i\right] + \epsilon_i\\
- &amp;= X_i^{\prime}(\beta + \tau\alpha) + \tau \gamma Z_i + [\tau\nu_i + \epsilon_i]\\
-\end{align*}$$`
-
-- The coefficient on `\(Z_i\)` in the reduced form regression is `\(\tau \gamma\)` 
-- The coefficient on `\(Z_i\)` in the first-stage is `\(\gamma\)`.
-- So the ratio of the reduced form to the first-stage regression is `\(\tau\)`.
-
----
-
-# Two-stage least squares
-
-- **First stage** - Regress `\(D_i\)` on `\(X_i\)` and `\(Z_i\)`. Get the fitted values `\(\hat{D_i}\)`
-
-$$\hat{D_i} =  X_i^{\prime}\hat{\alpha} + \hat{\gamma} Z_i  $$
-
-- **Second stage** - Regress `\(Y_i\)` on `\(X_i\)` and fitted values `\(\hat{D_i}\)`
-
-`$$\hat{Y_i} = X_i^{\prime}\hat{\beta} + \hat{\tau} \hat{D_i}$$`
-
---
-
-- The coefficient on the fitted values is the IV estimate 
-  - But, the standard errors will be wrong - Why?
-
-
----
-
-# General 2SLS
-
-- A more general matrix-algebra-y way of representing 2SLS is with the linear model
-
-`$$\mathbf{Y} = \mathbf{X}\beta + \epsilon$$`
-where `\(\mathbf{X}\)` is an `\(n\)` by `\(K\)` matrix of endogenous variables and exogenous covariates.
-
---
-
-- `\(\mathbf{Z}\)` is an `\(n\)` by `\(L\)` matrix of exogenous instruments and exogenous covariates.
-
---
-
-- Key assumptions:
-  - `\(E[\epsilon_i | \mathbf{Z}] = 0\)` (instruments are exogenous)
-  - `\(\mathbf{Z}\)` is excluded from the outcome model
-
----
-
-# General 2SLS
-
-- We define a projection matrix `\(\mathbf{P}_{\mathbf{z}} = \mathbf{Z}(\mathbf{Z}^{\prime}\mathbf{Z})^{-1}\mathbf{Z}^{\prime}\)`
-- The &quot;fitted values&quot; from the first stage can be written as 
-
-`$$\hat{\mathbf{X}} = \mathbf{P}_{\mathbf{z}} \mathbf{X}$$`
-- Two features of the projection matrix: `\(\mathbf{P}_\mathbf{z}^{\prime} = \mathbf{P}_\mathbf{z}\)` and `\(\mathbf{P}_\mathbf{z}\mathbf{P}_\mathbf{z} = \mathbf{P}_\mathbf{z}\)`
---
-
-- So our 2SLS IV estimator can be written as 
-
-`$$\begin{align*}
-\hat{\beta}_{\text{IV}} &amp;= (\hat{\mathbf{X}}^{\prime}\hat{\mathbf{X}})^{-1}\hat{\mathbf{X}}^{\prime}\mathbf{Y}\\
-&amp;=  ((\mathbf{P}_{\mathbf{z}} \mathbf{X})^{\prime}\mathbf{P}_{\mathbf{z}} \mathbf{X})^{-1}(\mathbf{P}_{\mathbf{z}} \mathbf{X})^{\prime}\mathbf{Y}\\
-&amp;=  (\mathbf{X}^{\prime}\mathbf{P}_{\mathbf{z}} \mathbf{X})^{-1}\mathbf{X}^{\prime}\mathbf{P}_{\mathbf{z}}\mathbf{Y}
-\end{align*}$$`
-
-- We have an expression for our IV estimator `\(\hat{\beta}_{\text{IV}}\)` purely in terms of `\(X\)` and `\(Z\)`
-
----
-
-# Variance estimation
-
-- Note that the residuals are `\(\hat{\epsilon} = \mathbf{Y} - \mathbf{X}\hat{\beta}_{\text{IV}}\)`. We can plug these in to our usual sandwich estimator for heteroskedasticity-robust SEs
-
-- Our sandwich estimator can be written as
-
-`$$\widehat{Var(\hat{\beta}_{\text{IV}})} = (\mathbf{X}^{\prime}\mathbf{P}_{\mathbf{z}} \mathbf{X})^{-1}\mathbf{X}^{\prime}\mathbf{P}_{\mathbf{z}}[\text{diag}(\hat{\epsilon}_i^2)]\mathbf{P}_{\mathbf{z}} \mathbf{X}(\mathbf{X}^{\prime}\mathbf{P}_{\mathbf{z}} \mathbf{X})^{-1}$$`
-
-- This is how any conventional 2SLS routine in R will calculate the standard errors.
-
----
-
-# Illustrating 2SLS
-
-- Recall our Gerber, Karlan and Bergan (2009, AEJ:AE) experiment
-  - `\(Z_i\)`: Random assignment to receive a free subscription to the Washington Post
-  - `\(D_i\)`: Actually subscribing to the Washington Post (as measured by a post-encouragement survey)
-  - `\(Y_i\)`: 2005 Turnout (measured in the survey)
-  - `\(X_i\)`: Gender, Age
-  
-- Let&#39;s load and subset
-
-
-```r
-green &lt;- read_dta(&quot;assets/publicdata.dta&quot;)
-wapost &lt;- green %&gt;% filter(treatment != &quot;TIMES&quot;&amp;!is.na(getpost)&amp;!is.na(voted)&amp;!is.na(Bfemale)&amp;!is.na(reportedage))
-```
-
----
-
-# Illustrating 2SLS
-
-- Our first stage regresses subscription on assignment + covariates
-
-
-```r
-first_stage &lt;- lm_robust(getpost ~ post + Bfemale + reportedage , data= wapost)
-summary(first_stage)
-```
-
-```
-## 
-## Call:
-## lm_robust(formula = getpost ~ post + Bfemale + reportedage, data = wapost)
-## 
-## Standard error type:  HC2 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)  CI Lower CI Upper  DF
-## (Intercept)  0.12097    0.06406   1.889 5.94e-02 -0.004786  0.24673 729
-## post         0.35233    0.03482  10.118 1.31e-22  0.283965  0.42069 729
-## Bfemale     -0.00435    0.03505  -0.124 9.01e-01 -0.073156  0.06445 729
-## reportedage  0.00170    0.00125   1.360 1.74e-01 -0.000756  0.00416 729
-## 
-## Multiple R-squared:  0.134 ,	Adjusted R-squared:  0.13 
-## F-statistic: 35.4 on 3 and 729 DF,  p-value: &lt;2e-16
-```
-
----
-
-# Illustrating 2SLS
-
-- Let&#39;s actually run 2SLS - I like two routines: `iv_robust` in `estimatr` (does 2SLS with robust SEs) and `ivmodel` in `ivmodel` (does robust 2SLS *and* weak-instrument robust tests + other diagnostics)
-
-
-```r
-wapo_2sls &lt;- iv_robust(voted ~ getpost  + Bfemale + reportedage | post + Bfemale + reportedage, data= wapost)
-summary(wapo_2sls)
-```
-
-```
-## 
-## Call:
-## iv_robust(formula = voted ~ getpost + Bfemale + reportedage | 
-##     post + Bfemale + reportedage, data = wapost)
-## 
-## Standard error type:  HC2 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|) CI Lower CI Upper  DF
-## (Intercept)  0.22562    0.07334  3.0766 2.17e-03  0.08165   0.3696 729
-## getpost      0.00428    0.09086  0.0471 9.62e-01 -0.17410   0.1827 729
-## Bfemale     -0.03495    0.03354 -1.0423 2.98e-01 -0.10079   0.0309 729
-## reportedage  0.01040    0.00127  8.1879 1.19e-15  0.00791   0.0129 729
-## 
-## Multiple R-squared:  0.093 ,	Adjusted R-squared:  0.0893 
-## F-statistic: 23.3 on 3 and 729 DF,  p-value: 2.15e-14
-```
----
-
-# Illustrating 2SLS
-
-
-```r
-wapo_2sls2 &lt;- ivmodelFormula(voted ~ getpost  + Bfemale + reportedage | post + Bfemale + reportedage, data= wapost, heteroSE=T)
-summary(wapo_2sls2)
-```
-
-```
-## 
-## Call:
-## ivmodel(Y = Y, D = D, Z = Z, X = X, intercept = intercept, beta0 = beta0, 
-##     alpha = alpha, k = k, manyweakSE = manyweakSE, heteroSE = heteroSE, 
-##     clusterID = clusterID, deltarange = deltarange, na.action = na.action)
-## sample size: 733
-## _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-## 
-## First Stage Regression Result:
-## 
-## F=111, df1=1, df2=729, p-value is &lt;2e-16
-## R-squared=0.132,   Adjusted R-squared=0.131
-## Residual standard error: 0.444 on 730 degrees of freedom
-## _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-## 
-## Coefficients of k-Class Estimators:
-## 
-##              k Estimate Std. Error t value Pr(&gt;|t|)
-## OLS    0.00000  0.04708    0.03247    1.45     0.15
-## Fuller 0.99863  0.00472    0.08979    0.05     0.96
-## TSLS   1.00000  0.00428    0.09060    0.05     0.96
-## LIML   1.00000  0.00428    0.09060    0.05     0.96
-## _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-## 
-## Alternative tests for the treatment effect under H_0: beta=0.
-## 
-## Anderson-Rubin test (under F distribution):
-## F=0.00223, df1=1, df2=729, p-value is 1
-## 95 percent confidence interval:
-##  [-0.178674420106811, 0.183689569448123]
-## 
-## Conditional Likelihood Ratio test (under Normal approximation):
-## Test Stat=0.00223, p-value is 1
-## 95 percent confidence interval:
-##  [-0.178674422961523, 0.183689572193093]
-```
-
----
-
-# The weak instrument problem
-
-- Our ratio estimator is consistent 
-
-`$$\hat{\tau}_{\text{IV}} = \frac{\widehat{Cov(Y_i, Z_i)}}{\widehat{Cov(D_i, Z_i)}} \overset{p}{\to} \tau + \frac{Cov(U_i, Z_i)}{Cov(D_i, Z_i)}$$`
-
-- Under exogeneity `\(Cov(Z_i, U_i)\)` is zero.
-
---
-
-- However, when there are small violations of exogeneity, a weak instrument will amplify them.
-- More generally, with a weak instrument, our t-ratio hypothesis tests assuming asymptotic normality will have **incorrect** type-1 error rates.
-  - Why? Distributions of ratios are poorly behaved.
-  
----
-
-# The weak instrument problem
-
-- Let&#39;s use a simulation to see how bad the bias can be in IV versus just a simple OLS regression of outcome on treatment under unobserved confounding.
---
-
-- Let `\(U_i \sim \mathcal{N}(0, 1)\)` be an unobserved confounder. `\(Z_i \sim \text{Bern}(.5)\)` is an **exogenous** instrument.
---
-
-- The probability of treatment is modeled via a logit
-`$$\text{log}\bigg(\frac{P(D_i = 1 | Z_i, U_i)}{1-P(D_i = 1 | Z_i, U_i)}\bigg) =  \gamma Z_i + U_i$$`
-
-- `\(\gamma\)` here captures the relationship between the exogenous instrument `\(Z_i\)` and the treatment
---
-
-- The outcome is a function of `\(U\)` and a mean zero error term `\(\epsilon_i\)` only, so the true treatment effect is `\(0\)`
-
-`$$Y_i = U_i + \epsilon_i$$`
-
----
-
-# The weak instrument problem
-
-- Let&#39;s see how the Wald estimator performs when we have a pretty large effect of `\(Z_i\)` on `\(D_i\)`: `\(\gamma = 2\)` and `\(N = 1000\)`
-
-
-
-
-```r
-## First stage effect
-mean(firststage)
-```
-
-```
-## [1] 0.345
-```
-
-```r
-## F-statistic from the first stage
-mean(firststageF)
-```
-
-```
-## [1] 157
-```
-
-```r
-## Bias of the naive OLS Y ~ X
-mean(naive)
-```
-
-```
-## [1] 0.726
-```
-
-```r
-## Bias of IV
-mean(IV)
-```
-
-```
-## [1] -0.0196
-```
-
----
-
-# The weak instrument problem
-
-- Sampling distribution of the naive OLS estimator
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-20-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
----
-
-# The weak instrument problem
-
-- Sampling distribution of the IV estimator
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-21-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
----
-
-
-# The weak instrument problem
-
-- Now, what happens when our instrument is weak: `\(\gamma = .2\)` and `\(N = 1000\)`
-
-
-
-
-```r
-## First stage effect
-mean(firststage)
-```
-
-```
-## [1] 0.041
-```
-
-```r
-## F-statistic from the first stage
-mean(firststageF)
-```
-
-```
-## [1] 2.6
-```
-
-```r
-## Bias of the naive OLS Y ~ X
-mean(naive)
-```
-
-```
-## [1] 0.826
-```
-
-```r
-## Bias of IV
-mean(IV)
-```
-
-```
-## [1] -1.04
-```
-
----
-
-# The weak instrument problem
-
-- Sampling distribution of the naive OLS estimator
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-24-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
----
-
-# The weak instrument problem
-
-- Sampling distribution of the IV estimator
-
-&lt;img src=&quot;data:image/png;base64,#week6_instrumental_variables_files/figure-html/unnamed-chunk-25-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
-
----
-
-# The weak instrument problem
-
-- When is an instrument too weak?
---
-
-- **Classic result:** Staiger and Stock (1997), Stock and Yogo (2005) use first stage F-statistic thresholds
-  - `\(\leadsto\)` heuristic of first-stage F-statistic below 10.
-- **Recently:** Lee, Moreira, McCrary, Porter (2020) -- If we want to use the F-statistic as a screen then we actually need `\(F &gt; 104.7\)`
---
-
-- Suggestions:
-  - **Anderson-Rubin (1949)** test statistic in addition to 2SLS t-ratio inference (with a single instrument) - correct coverage/rejection levels even under weak instruments.
-  - Angrist and Pischke (2009) - with &quot;just-identified&quot; IV (number of instruments = number of endogenous variables) bias is usually overwhelmed by the large standard errors.
-
----
-
-# Conclusion
-
-- Instrumental variables lets us leverage *alternative* sources of randomness to learn about an otherwise confounded causal relationship.
---
-
-- An instrument:
-  - Affects treatment
-  - Doesn&#39;t affect the outcome except through treatment
-  - Is ignorable w.r.t the outcome.
---
-
-- LATE theorem: The IV estimand is the ATE among those who would take treatment due to the instrument.
-  - With continuous treatment/instrument - a weighted average of LATEs (Angrist and Imbens, 1995)
-  - With covariates - a weighted average of covariate-specific LATEs
-  - But be careful with this interpretation when the model is not fully saturated (Słoczyński, 2022)
-
---
-
-- Statistical inference is tricky
-  - Beware weak instruments - typical large-sample asymptotics do poorly when instruments are irrelevant.
-  - Consider weak-instrument robust tests (Anderson-Rubin)
+# Difference-in-differences with many time periods
+$$
+  \require{cancel}
+$$
 
 ---
     </textarea>
@@ -1117,17 +520,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     s = s[1].replace(token, ''); d = data[s];
     if (d) el.style.backgroundImage = 'url("' + d + '")';
   }
-})({
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-21-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-1-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-4-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-3-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-24-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-2-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-20-1.png": "data:image/png;base64,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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-25-1.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAIAAAApSmgoAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO3de1xUdf7H8e/AqCAMMgqSKRq4gI1iuLQg6oaW6WblDVGztu3m5oJd3Npdd90srdz2UVtW+0jt4mptW1uaIWaylhZ5XTVLyihKBLfwws0G5Sae3x+nHw/CgUz5fufMd17Pv4YjM5/vYeDt8cvbGZthGAIAoK8Aby8AACAXQQ8AmiPoAUBzBD0AaI6gBwDNEfQAoDmCHgA0R9ADgOYIegDQHEEPAJoj6AFAcwQ9AGiOoAcAzRH0AKA5gh4ANEfQA4DmCHoA0BxBDwCaI+gBQHMEPQBojqAHAM0R9ACgOYIeADRH0ONHO3LkiM1ms9lsx48fP7dHqK6urqioOHXqVMcu7DydzapOnDhhs9mCg4NbHV+wYIHNZpsxY0bzkbq6uuDgYJvNVlRUdJYLaOvBW/r8889tNltcXNy53R3+iaCHF4waNSoiIuLjjz/29kK+53xWlZGRIYT4z3/+c/r0afNIfn5+XV3dJZdc4jGUPQoICEhKSho8ePA5LABoB0EPdIBBgwbFxcVVVFTs3r3bPJKXlyeEmDJlytk/SHBw8N69e3fu3CllifBjBD3Oi7mNExkZ+eabbw4aNCgsLGz8+PFHjx41/3Tbtm3p6elhYWE9e/acMGHCp59+KoQYMmTIRx99JIS49NJLV69e3fwI27dvN498+umnNpvt4osvNh9k69atNpstLS1NCPHVV1/ZbLaYmJi77747PDz8oosueuqpp7Zv356cnOxwOC6//PKSkhLzXgcPHpw4cWJkZGRUVNRNN91k7jK1s9pWqxJCbNy4MS0tLSwsrEePHldeeaX5p+2YPHmyEGLDhg3mh2bQm1f6Hh/qzBNvtffS/gIee+yxvn37xsTEPPDAA4ZhnLkej1+Btp4UaM4AfqTDhw+b3zzV1dXmbbvd3qVLl6SkJLvdLoS47bbbDMM4duxYWFhYQEDApEmTRo0aJYS48MILa2trN2zY0K9fPyHEww8/fOjQIfMRQkNDo6OjhRCrVq365JNPhBADBgwwx23ZskUIMXToUMMwvvzyS3N0165dBw4caN7u3LlzQkKCw+EQQkydOtUwjG+//faCCy7o1KnTpEmTRowYIYS46qqrmpqa2lltq1UdPHgwODi4U6dOo0ePHjp0qBAiJibGMIyamhohRFBQ0JlfFvNKPC0tzTCM//3vf0IIl8tlGEZbD3Xmibd88LbuVVhYKIQICAgICgpKT083z/qPf/xjq7W19RVo60mR/10DbyLo8aOdGfRCiK1btxqG8dJLLwkhBg8ebBjGe++9J4To379/cXGxYRgPPvjgrFmzSktLDcNISkoSQuzevbvlo82dO7esrKyxsfEHg95msx04cMAwDDPCbrjhBsMwNm7c2Hyvxx9/XAhxxx13mI8wbNgwIURubm47q221qg8++GD69OmLFy82DKOysrJTp05CiKqqqnaC/vTp03369AkMDKyoqHjhhReEEPfff387D3Xmibd88LbuZQa9+ReDYRjbtm0TQoSEhJw4caLl3dv6CrTzpEBjbN2gAzidTjNKLr30UiHEyZMnhRApKSmRkZFfffVVTEyMy+WqqKi49957zavXM3Xp0uXPf/7zBRdcYF5lty86OjomJkYI0adPHyGEeWVqPrLZmdm3b58Q4umnnzbbQWYaNu9ReFxtKyNGjJgzZ05xcfFll10WGxvb2NgohGhqampnVTabbfLkyU1NTe+8807LDfr2H6qtE2//XsHBwVdffbUQIi0tLTo6+sSJE5999lnLu7f1FfhRTwq0QdCjAwQGBpo3bDZb88Hg4ODCwsKlS5eOGzeuuLh48eLFAwcONK/Wz+RwOEJCQloeMTztO5sCAr73fds8vZkZmtnZ2a+2MHbs2HZW28q7776blpb2xhtvTJ06ddOmTT169GjrM1syt+nXr1//zjvvxMfHDxo06Acf6swTP5sFtPzimKfT6lza+gr8qCcF2iDoIcuGDRseffTRfv36vfXWW+Xl5VdeeWV9fX1+fn7zJ7TVWA8KChJCHDx48NtvvxVCvP/++z92tLl9HxISMm3atGnTph0/fnz37t3txHpL5qpyc3NPnz590003zZ492zCMioqKs7nviBEjIiMjX3nllcrKyszMTPPguT1U+/eqq6sz/9GwZ8+egwcPdu3adcCAAS0/oa2vwA8+KdCTVzeO4JPO3KOPiIgw/8jcQf7JT35iGMb69euFEKGhoZMmTcrMzDR/tVhQUGAYxoQJE4QQ48aN27dvX6tHMAyjsbExMjJSCNGzZ8/ExEQz91vu0V900UXmZ06fPl0IsWLFilajjx8/HhkZ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",
-"week6_instrumental_variables_files/figure-html/unnamed-chunk-5-1.png": "data:image/png;base64,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"
-}, 'data:image/png;base64,#');</script>
+})({}, 'data:image/png;base64,#');</script>
 
 <script>
 slideshow._releaseMath = function(el) {
